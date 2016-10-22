@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head></h:head>
+
+    <h:body>
+        <h:form id="formForos">
+            <h1>Foros existentes</h1>
+            <p:dataTable var="selectedForos" value="#{registroForosBean.foros}">
+                <p:column>
+                    <p:commandButton value="Ver Respuestas" action="registrorespuestaforo.xhtml">
+                        <f:setPropertyActionListener value="#{selectedForos.identificador}" target="#{registroForosBean.idForo}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column headerText="identificador">
+                    <h:outputText value="#{selectedForos.identificador}" />
+                </p:column>
+                <p:column headerText="Autor">
+                    <h:outputText value="#{selectedForos.autor.nombre}" />
+                </p:column>
+                <p:column headerText="Comentario">
+                    <h:outputText value="#{selectedForos.comentario}" />
+                </p:column>
+                <p:column headerText="Titulo">
+                    <h:outputText value="#{selectedForos.titulo}" />
+                </p:column>
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{selectedForos.fechayHora}"/>
+                </p:column>
+            </p:dataTable>
+            <br/>
+            
+            <br/>
+            <br/>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="Titulo:"/>
+                <p:inputText  value="#{registroForosBean.titulo}"/>
+                
+                <p:outputLabel value="Comentario:"/>
+                <p:inputText  value="#{registroForosBean.respuesta}"/>
+            </h:panelGrid>
+            
+            <p:commandButton value="Agregar Foro" update="formForos" actionListener="#{registroForosBean.newForo()}"/>
+            
+        </h:form>
+    </h:body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:m="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head></h:head>
+
+    <h:body>
+        
+        <h:form id="formRespuestas">
+            <h3>Foro</h3>
+            <h:outputText value ="#{registroForosBean.tituloForo}"/>
+            <br/>
+            <h:outputText value ="#{registroForosBean.pregunta}"/>
+                          
+            <h3>Repuestas</h3>
+            
+            <p:dataTable var="selectedComentarios" value="#{registroForosBean.respuestasForo}">
+                <p:column headerText="Usuario">
+                    <h:outputText value="#{selectedComentarios.autor.nombre}" />
+                </p:column>
+                <p:column headerText="Respuesta">
+                    <h:outputText value="#{selectedComentarios.contenido}"/>
+                </p:column>
+                <p:column headerText="Fecha Respuesta">
+                    <h:outputText value="#{selectedComentarios.fechayHora}"/>
+                </p:column>
+                
+            </p:dataTable>
+            
+            <br/>            
+            <p:inputTextarea rows="6" cols="33" value="#{registroForosBean.respuesta}" />
+            <br/>
+            <br/>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:commandButton value="Ingresar Respuesta" update="formRespuestas" actionListener="#{registroForosBean.agregarRespuesta()}"/>
+                <br/>
+                <br/>
+                <p:commandButton value="Regresar a los foros" action="registroentradaforo.xhtml"/>
+            </h:panelGrid>
+            
+            
+        </h:form>
+        
+    </h:body>
+
+</html>
