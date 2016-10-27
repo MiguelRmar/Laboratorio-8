@@ -7,9 +7,10 @@
         <setting name="logImpl" value="LOG4J"/>        
     </settings>
     
-    <typeAliases>
-        <typeAlias type='edu.eci.pdsw.samples.entities.Consulta' alias='Consulta'/>
-        <typeAlias type='edu.eci.pdsw.samples.entities.Paciente' alias='Paciente'/>
+   <typeAliases>
+        <typeAlias type='edu.eci.pdsw.samples.entities.EntradaForo' alias='EntradaForo'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Comentario' alias='Comentario'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Usuario' alias='Usuario'/>
     </typeAliases>
     
     <environments default="development">
@@ -25,6 +26,7 @@
     </environments>
     
     <mappers>
-        <mapper resource="mappers/PacienteMapper.xml"></mapper>
-    </mappers> 
+        <mapper resource="mappers/EntradaForoMapper.xml"></mapper>
+        <mapper resource="mappers/UsuarioMapper.xml"></mapper>
+    </mappers>
 </configuration>

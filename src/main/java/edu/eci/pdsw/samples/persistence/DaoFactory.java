@@ -17,6 +17,7 @@
 package edu.eci.pdsw.samples.persistence;
 
 import edu.eci.pdsw.samples.persistence.jdbcimpl.JDBCDaoFactory;
+
 import java.util.Properties;
 
 /**
@@ -31,14 +32,19 @@ public abstract class DaoFactory {
     private static volatile DaoFactory instance = null;
 
     public static DaoFactory getInstance(Properties appProperties) {
+        DaoFactory instance = DaoFactory.instance;
         if (instance == null) {
             synchronized (DaoFactory.class) {
+                instance = DaoFactory.instance;
                 if (instance == null) {
                     if (appProperties.get("dao").equals("jdbc")) {
-                        instance = new JDBCDaoFactory(appProperties);
-                    } else {
+                        DaoFactory.instance = instance = new JDBCDaoFactory(appProperties);
+                   
+                    }
+                    else {
                         throw new RuntimeException("Wrong configuration: Unsupported DAO:" + appProperties.get("dao"));
                     }
+                    
                 }
             }
         }

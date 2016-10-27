@@ -6,6 +6,11 @@
     <settings>
         <setting name="logImpl" value="LOG4J"/>        
     </settings>
+    <typeAliases>
+        <typeAlias type='edu.eci.pdsw.samples.entities.EntradaForo' alias='EntradaForo'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Comentario' alias='Comentario'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Usuario' alias='Usuario'/>
+    </typeAliases> 
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC" />
